@@ -1,0 +1,12 @@
+.auth__footer {
+  display: flex;
+  align-items: center;
+  color: white;
+  margin: 0 auto;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  gap: 5px;
+}

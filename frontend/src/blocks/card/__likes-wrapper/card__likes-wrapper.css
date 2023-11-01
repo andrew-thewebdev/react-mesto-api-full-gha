@@ -1,0 +1,5 @@
+.card__likes-wrapper {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+}

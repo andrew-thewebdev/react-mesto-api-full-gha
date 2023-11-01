@@ -1,0 +1,13 @@
+.profile__text-wrapper {
+  max-width: 294px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__text-wrapper {
+    max-width: 189px;
+    margin-top: 19px;
+  }
+}

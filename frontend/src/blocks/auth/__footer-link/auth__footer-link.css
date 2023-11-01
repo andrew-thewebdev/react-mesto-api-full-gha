@@ -1,0 +1,9 @@
+.auth__footer-link {
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
+
+.auth__footer-link:hover {
+  opacity: 0.6;
+}

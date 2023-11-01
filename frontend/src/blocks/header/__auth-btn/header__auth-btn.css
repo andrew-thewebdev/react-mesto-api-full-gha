@@ -1,0 +1,21 @@
+.header__auth-btn {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+
+  color: #FFF;
+text-align: right;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px; /* 122.222% */
+text-decoration: none;
+}
+
+.header__auth-btn:hover {
+  opacity: 0.6;
+}

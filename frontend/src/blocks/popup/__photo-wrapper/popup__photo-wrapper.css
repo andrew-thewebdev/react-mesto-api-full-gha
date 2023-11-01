@@ -1,0 +1,7 @@
+.popup__photo-wrapper {
+  font-size: 0;
+  max-width: 75vw;
+  max-height: 75vh;
+  box-sizing: border-box;
+  position: relative;
+}
