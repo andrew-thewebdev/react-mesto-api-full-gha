@@ -6,7 +6,7 @@ const PermissionError = require('../errors/PermissionError');
 
 module.exports.getCards = (req, res, next) => {
   // prettier-ignore
-  Card.find({})
+  Card.find({}).sort({ _id: -1 })
     .populate('owner')
     .then((cards) => res.send(cards))
     .catch(next);
@@ -72,6 +72,7 @@ module.exports.likeCard = async (req, res, next) => {
       { new: true },
     );
     await Card.populate(card, 'owner');
+    // await Card.populate('likes');
     return res.send(likeCardResult);
   } catch (error) {
     if (error.name === 'CastError') {
@@ -101,6 +102,8 @@ module.exports.dislikeCard = async (req, res, next) => {
       { $pull: { likes: disliker } }, // убрать _id из массива
       { new: true },
     );
+
+    await Card.populate(card, 'owner'); // new
 
     return res.send(likeCardResult);
   } catch (error) {

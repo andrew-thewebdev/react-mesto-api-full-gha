@@ -9,7 +9,8 @@ const AuthenticationError = require('../errors/AuthenticationError');
 module.exports.getUsers = (req, res, next) => {
   // prettier-ignore
   User.find({})
-    .then((users) => res.send({ data: users }))
+    // .then((users) => res.send({ data: users }))
+    .then((users) => res.send(users))
     .catch(next);
 };
 

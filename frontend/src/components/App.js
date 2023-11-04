@@ -41,10 +41,12 @@ function App() {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
       auth.getContent(jwt).then((res) => {
-        // console.log(res);
-        if (res.data) {
+        console.log(res);
+        // if (res.data) {
+        if (res) {
           setLoggedIn(true);
-          setEmail(res.data.email);
+          // setEmail(res.data.email);
+          setEmail(res.email);
           navigate('/');
         }
       });
@@ -102,14 +104,15 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    // const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
+          state.map((c) => (c._id === card._id ? newCard : c)),
         );
       })
       .catch((err) => {
@@ -230,11 +233,11 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
+      <div className='page'>
         <Header loggedIn={loggedIn} email={email} onSignOut={handleSignOut} />
         <Routes>
           <Route
-            path="/"
+            path='/'
             element={
               <ProtectedRoute
                 onEditProfile={handleEditProfileClick}
@@ -250,17 +253,17 @@ function App() {
             }
           />
           <Route
-            path="/sign-up"
+            path='/sign-up'
             element={<Register onRegister={handleRegister} />}
           />
-          <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
+          <Route path='/sign-in' element={<Login onLogin={handleLogin} />} />
           <Route
-            path="*"
+            path='*'
             element={
               loggedIn ? (
-                <Navigate to="/" replace />
+                <Navigate to='/' replace />
               ) : (
-                <Navigate to="/sign-in" replace />
+                <Navigate to='/sign-in' replace />
               )
             }
           />
@@ -287,9 +290,9 @@ function App() {
         />
 
         <PopupWithForm
-          submitBtnText="Да"
-          title="Вы уверены?"
-          name="delete-confirm"
+          submitBtnText='Да'
+          title='Вы уверены?'
+          name='delete-confirm'
         ></PopupWithForm>
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />

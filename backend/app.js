@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
+const cors = require('cors');
 
 const router = require('./routes/index');
 
@@ -17,6 +18,8 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT = 3000 } = process.env;
 const MONGO_URL = 'mongodb://127.0.0.1:27017/mestodb';
 const app = express();
+
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
