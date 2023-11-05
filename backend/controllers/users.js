@@ -134,6 +134,8 @@ module.exports.updateAvatar = async (req, res, next) => {
 
 module.exports.login = async (req, res, next) => {
   const { password, email } = req.body;
+  const { JWT_SECRET, NODE_ENV } = process.env;
+  // console.log('NODE_ENV', NODE_ENV);
   try {
     const user = await User.findOne({ email })
       .select('+password')
@@ -143,9 +145,16 @@ module.exports.login = async (req, res, next) => {
       throw new AuthenticationError('Неправильный email или password');
     }
 
-    const token = jwt.sign({ _id: user._id }, 'super-strong-secret', {
-      expiresIn: '7d',
-    });
+    // const token = jwt.sign({ _id: user._id }, 'super-strong-secret', {
+    //   expiresIn: '7d',
+    // });
+    const token = jwt.sign(
+      { _id: user._id },
+      NODE_ENV ? JWT_SECRET : 'super-strong-secret',
+      {
+        expiresIn: '7d',
+      },
+    );
 
     return res.status(200).send({ token, email: user.email });
   } catch (error) {
