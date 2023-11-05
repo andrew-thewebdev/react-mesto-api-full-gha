@@ -10,8 +10,8 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.80.198
+IP 158.160.80.198
 
-Frontend https://...
+Frontend https://mestechko.nomoredomainsmonster.ru
 
-Backend https://...
+Backend https://api.mestechko.nomoredomainsmonster.ru
