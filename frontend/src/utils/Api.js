@@ -174,7 +174,8 @@ const api = new Api({
   //   authorization: '40147b95-7947-4dd9-abfc-394e10acaef8',
   //   'Content-Type': 'application/json',
   // },
-  baseUrl: 'http://localhost:3000',
+  // baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.mestechko.nomoredomainsmonster.ru',
 });
 
 export default api;
